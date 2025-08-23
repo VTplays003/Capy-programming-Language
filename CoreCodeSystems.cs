@@ -9,9 +9,10 @@ namespace CapySystem
         {
             Console.WriteLine(message);
         }
-        public static void Answer()
+        //ANSWER MIGHT BE BUGGY (depending on codespace)
+        public static string Answer()
         {
-            Console.ReadLine();
+            return Console.ReadLine();
         }
     }
     public static class CapyFileConsole
@@ -21,7 +22,6 @@ namespace CapySystem
 
         static CapyFileConsole()
         {
-            // Ensure folder exists when the class is first used
             if (!Directory.Exists(CapyFolder))
                 Directory.CreateDirectory(CapyFolder);
         }
@@ -60,4 +60,5 @@ namespace CapySystem
     }
 
 }
+
 
