@@ -1,20 +1,37 @@
-﻿using CapySystem;
-
-namespace CapySystem 
+using CapySystem;
+using System;
+using System.Text;
+#pragma warning disable CA1416
+namespace CapySystem
 {
-
-    public static class CapyConsole 
+    public static class CapyConsole
     {
+        public static void Beep(int frequency, int duration)
+        {
+            Console.Beep(frequency, duration);
+        }
+
         public static void Talk(string message)
         {
             Console.WriteLine(message);
         }
-        //ANSWER MIGHT BE BUGGY (depending on codespace)
+        public static void Speak(string message)
+        {
+            Console.Write(message);
+        }
         public static string Answer()
         {
-            return Console.ReadLine();
+            return Console.ReadLine()!;
+        }
+        public static string Say()
+        {
+            return Console.ReadKey().KeyChar.ToString();
         }
     }
+}
+
+namespace CapyFileSystem
+{
     public static class CapyFileConsole
     {
         private static bool hasPaper = false;
@@ -58,7 +75,18 @@ namespace CapySystem
             CapyConsole.Talk("Your capy got a piece of paper!");
         }
     }
-
+}
+namespace CapyTextSystem
+{
+    public static class CapyTextConsole
+    {
+        public static void CapyStringB_or_C(string starter)
+        {
+            StringBuilder stringBuilder = new(starter);
+            StringBuilder loaf = stringBuilder;
+            loaf.Append("🦫");
+        }
+    }
 }
 
 
