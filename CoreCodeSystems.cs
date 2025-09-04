@@ -1,3 +1,4 @@
+//All of this is outdated. Will be updated soon
 using CapySystem;
 using System;
 using System.Text;
@@ -88,5 +89,6 @@ namespace CapyTextSystem
         }
     }
 }
+
 
 
