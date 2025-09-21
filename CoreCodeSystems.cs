@@ -1,32 +1,114 @@
-//All of this is outdated. Will be updated soon
 using CapySystem;
 using System;
 using System.Text;
-#pragma warning disable CA1416
+using System.IO;
+
 namespace CapySystem
 {
     public static class CapyConsole
     {
-        public static void Beep(int frequency, int duration)
-        {
-            Console.Beep(frequency, duration);
-        }
 
-        public static void Talk(string message)
+        public static class CapyConsoleProperties
         {
-            Console.WriteLine(message);
+            
         }
-        public static void Speak(string message)
+        public static class CapyConsoleMethods
         {
-            Console.Write(message);
-        }
-        public static string Answer()
-        {
-            return Console.ReadLine()!;
-        }
-        public static string Say()
-        {
-            return Console.ReadKey().KeyChar.ToString();
+            public static void Beep(int frequency, int duration)
+            {
+                if (OperatingSystem.IsWindows())
+                {
+                    Console.Beep(frequency, duration);
+                }
+                else
+                {
+                    Console.Write("\a");
+                }
+            }
+
+            public static void Erase()
+            {
+                Console.Clear();
+            }
+
+            public static (int Left, int Top) GetMousePosition()
+            {
+                return Console.GetCursorPosition();
+            }
+            //Get Cursor Position is not going to be coded for now
+
+
+            //OpenStandardError, OpenStandardInput, and OpenStandardOutput are not going to be coded for now
+
+            public static int ReadIt()
+            {
+                return Console.Read();
+            }
+
+            public static ConsoleKeyInfo ReadTheKey()
+            {
+                return Console.ReadKey();
+            }
+
+            public static void Talk(string message)
+            {
+                Console.WriteLine(message);
+            }
+
+            public static void Speak(string message)
+            {
+                Console.Write(message);
+            }
+
+            public static string Answer()
+            {
+                return Console.ReadLine() ?? string.Empty;
+            }
+
+            public static string Say()
+            {
+                return Console.ReadKey().KeyChar.ToString();
+            }
+
+            public static void ColorReset()
+            {
+                Console.ResetColor();
+            }
+
+            public static void CapyBufferSize(int width, int height)
+            {
+                Console.SetBufferSize(width, height);
+            }
+
+            public static void SetCapyPosition(int left, int top)
+            {
+                Console.SetCursorPosition(left, top);
+            }
+
+            public static void SetCapyError(System.IO.TextWriter newError)
+            {
+                Console.SetError(newError);
+            }
+
+            public static void CapyIn(System.IO.TextReader newIn)
+            {
+                Console.SetIn(newIn);
+            }
+
+            public static void CapyOut(System.IO.TextWriter newOut)
+            {
+                Console.SetOut(newOut);
+            }
+
+            public static void SetCapyWposition(int left, int top)
+            {
+                Console.SetWindowPosition(left, top);
+            }
+
+            public static void SetCapyWSize(int width, int height)
+            {
+                Console.SetWindowSize(width, height);
+            }
         }
     }
 }
@@ -77,18 +159,20 @@ namespace CapyFileSystem
         }
     }
 }
+
 namespace CapyTextSystem
 {
     public static class CapyTextConsole
     {
-        public static void CapyStringB_or_C(string starter)
+        public static string CapyStringB_or_C(string starter)
         {
             StringBuilder stringBuilder = new(starter);
-            StringBuilder loaf = stringBuilder;
-            loaf.Append("🦫");
+            stringBuilder.Append("🦫");
+            return stringBuilder.ToString();
         }
     }
 }
+
 
 
 
